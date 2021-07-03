@@ -4,6 +4,7 @@ import { Todos } from './My components/Todos'
 import { Footer } from './My components/Footer'
 import { About } from './My components/About'
 import { AddTodo } from "./My components/AddTodo";
+import { PopUpWidget } from './My components/PopUpWidget'
 import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
@@ -55,13 +56,14 @@ function App() {
   return (
     <>
       <Router>
-        <Header title="My Todo List" searchBar={false} />
+        <Header title="My Todo List" searchBar={true} />
         <Switch>
           <Route exact path="/" render={() => {
             return (
               <>
                 <AddTodo addTodo={addTodo} />
                 <Todos todos={todos} onDelete={onDelete} />
+                <PopUpWidget />
               </>
             )
           }}>
