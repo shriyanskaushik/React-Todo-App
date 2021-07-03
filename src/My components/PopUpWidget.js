@@ -20,24 +20,23 @@ export const PopUpWidget = () => {
         try {
             size = input.files[0].size;    
         } catch (error) {
-            console.log("File not uploaded error");
+            // console.log("File not uploaded error");
             message.innerHTML = "Please upload your image first."
             return;
         }
         
 
         if(input.value && size/1024 <= 5120){
-            console.log("File has been added");
-            console.log("Size : " + size / 1024 + " KB");
             document.getElementById("myForm").style.display = "none";
             document.querySelector('.open-button').style.display = "none";
             document.querySelector('.alert').style.display = 'block';
         }
         else{
             if(!input.value)
-                console.log("File not uploaded");
+                message.innerHTML = "Please upload your image first."
             else{
-                console.log("Size of the image is more than 5 MB");
+                message.innerHTML = "Please upload image of size upto 5MB."
+                return;
             }
             
         }
@@ -50,7 +49,7 @@ export const PopUpWidget = () => {
         var filename1 = inputfile.value.replace(/^.*[\\]/, '');
         var label1 = document.querySelector('#name');
         label1.innerHTML = filename1;
-        console.log("Uploaded file : " + filename1);
+        // console.log("Uploaded file : " + filename1);
     }
 
     // document.querySelector('#file').onChange = function () {

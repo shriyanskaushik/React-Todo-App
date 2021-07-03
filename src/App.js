@@ -22,7 +22,7 @@ function App() {
   }
 
   const onDelete = (todo) => {
-    console.log("I am on delete of todo", todo);
+    // console.log("I am on delete of todo", todo);
 
     setTodos(todos.filter((e) => {
       return e !== todo;
@@ -45,7 +45,7 @@ function App() {
       desc: desc
     }
     setTodos([...todos, newTodo]);
-    console.log(newTodo);
+    // console.log(newTodo);
   }
 
   const [todos, setTodos] = useState(initTodo);
