@@ -206,3 +206,16 @@ color: black;
     left: 25%;
   }
 }
+
+@media screen and (max-width: 500px){
+  .form-popup{
+    width: 70%;
+    left: 15%;
+  }
+}
+
+.open-button{
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+}
