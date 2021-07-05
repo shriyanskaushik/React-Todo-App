@@ -6,11 +6,13 @@ import './PopUp.css'
 export const PopUpWidget = () => {
 
     function openForm() {
+        document.querySelector('.open-button').style.display = "none";
         document.getElementById("myForm").style.display = "block";
     }
 
     function closeForm() {
         document.getElementById("myForm").style.display = "none";
+        document.querySelector('.open-button').style.display = "block";
     }
 
     function submit() {
@@ -52,9 +54,6 @@ export const PopUpWidget = () => {
         // console.log("Uploaded file : " + filename1);
     }
 
-    // document.querySelector('#file').onChange = function () {
-    //     alert('Selected file: ' + this.value);
-    // };
 
     return (
         <div>
@@ -77,7 +76,7 @@ export const PopUpWidget = () => {
                     <img src="Correct.jpg" alt="Correct way to upload document" height="130px" width = "210px" id="demo-img"/>
                     <button type="button" className="btn submit" onClick={submit}>Submit</button>
                     <button type="button" className="btn cancel" onClick={ closeForm }>Close</button>
-                    <p><small>This information is used for identification only, and will be kept <br /> secure.</small></p>
+                    <p><small>This information is used for identification only, and will be kept secure.</small></p>
                 </form>
             </div>
         </div>
