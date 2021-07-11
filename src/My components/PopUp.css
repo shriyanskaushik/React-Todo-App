@@ -13,6 +13,8 @@
   left: 80%;
   width: 15%;
   text-align: center;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* The popup form - hidden by default */
@@ -216,6 +218,5 @@ color: black;
 
 .open-button{
   text-align: center;
-  padding-left: 0;
-  padding-right: 0;
+  
 }
