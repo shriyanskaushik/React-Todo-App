@@ -141,6 +141,18 @@ export const Hook = () => {
                 </div>
             </div>
 
+            <h2>---------useReducer Hook---------</h2>
+            <br /><br />
+            <div className="updown">
+                <input value = {callbackNumber} onChange = {e => setCallbackNumber(parseInt(e.target.value))} className="hook-input" type="number" />
+                <br />
+                <button onClick = {() => setCallbackDark(prevDark => !prevDark)} className="hook-button">Change Theme</button>
+                <br />
+                <div style = {callbackThemeStyle}>
+                <List getItems = {getItems} />
+                </div>
+            </div>
+
         </div>
     )
 }
