@@ -5,6 +5,7 @@ import { Footer } from './My components/Footer'
 import { About } from './My components/About'
 import { AddTodo } from "./My components/AddTodo";
 import { PopUpWidget } from './My components/PopUpWidget'
+import { Hook } from "./My components/Hook";
 import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
@@ -31,7 +32,7 @@ function App() {
   }
 
   const addTodo = (title, desc) => {
-    //console.log("I am adding this todo", title, desc) 
+    //console.log("I am adding this todo", title, desc)
     let sno;
     if (todos.length === 0) {
       sno = 0;
@@ -70,6 +71,9 @@ function App() {
           </Route>
           <Route exact path="/about">
             <About />
+          </Route>
+          <Route exact path = "/hooks">
+            <Hook />
           </Route>
         </Switch>
         <Footer />

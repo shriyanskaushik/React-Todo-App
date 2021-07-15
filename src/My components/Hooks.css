@@ -1,0 +1,48 @@
+.mainDate{
+    text-align: center;
+}
+
+h2{
+    position: relative;
+    text-align: center;
+}
+
+.hook-button{
+    height: 40px;
+    width: auto;
+    background: #d9eb3b;
+    border: none;
+    text-align: center;
+    margin: auto;
+    color: black;
+    border-radius: 15px;
+    vertical-align: middle;
+    margin: 10px;
+}
+
+.updown{
+    position: relative;
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+span{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+button:hover{
+    background-color: #b0eb10;
+}
+
+#change{
+    color: red;
+}
+
+.hook-input{
+    width: 40%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+}
