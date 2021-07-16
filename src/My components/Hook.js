@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback, useReducer } from 'react';
 
 import { HookTodo } from "./hookTodo";
+import {ThemeProvider} from './ThemeContext';
+import {FunctionContextComponent} from './FunctionContextComponent';
 import {List} from './List';
 import './Hooks.css';
 
@@ -187,6 +189,12 @@ export const Hook = () => {
                     return <HookTodo key = {todo.id}  todo = {todo} dispatch = {dispatch} />
                 })}
             </div>
+
+            <h2>---------useContext Hook---------</h2>
+            <br /><br />
+            <ThemeProvider>
+                <FunctionContextComponent />
+            </ThemeProvider>
 
         </div>
     )
