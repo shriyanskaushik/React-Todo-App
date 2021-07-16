@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback, useReducer } from 'react';
 
+import { HookTodo } from "./hookTodo";
 import {List} from './List';
 import './Hooks.css';
 
@@ -16,26 +17,40 @@ export const Hook = () => {
     const [callbackNumber, setCallbackNumber] = useState(1);
     const [callbackDark, setCallbackDark] = useState(false);
 
-    const reducer = (state, action) => {
+    const reducer = (todos, action) => {
         switch (action.type) {
-            case 'increment':
-                return { count : state.count + 1 };
-            case 'decrement':
-                return { count : state.count - 1 };
+            case 'addTodo':
+                return [...todos, newTodo(action.payload.name)]
+            case 'toggleTodo':
+                return todos.map((todo) => {
+                    if (todo.id === action.payload.id){
+                        return {...todo , complete : !todo.complete}
+                    }
+                    return todo
+                })
+            case 'deleteTodo':
+                return todos.filter(todo => {
+                    return todo.id !== action.payload.id
+                })
             default:
-                return state;
+                break;
         }
     };
 
-    const [state, dispatch] = useReducer(reducer, { count : 0 });
-
-    const incrementCount = () => {
-        dispatch({ type : 'increment' });
+    const newTodo = (name) => {
+        return { id:Date.now(), name : name, complete : false }
     }
 
-    const decrementCount = () => {
-        dispatch({ type : 'decrement' });
+    const [todos, dispatch] = useReducer(reducer, []);
+    const [todoName, setTodoName] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch({ type : 'addTodo', payload : {name : todoName } });
+        setTodoName('')
     }
+
+    console.log(todos);
 
     // -------------UseState---------------
 
@@ -165,9 +180,12 @@ export const Hook = () => {
             <h2>---------useReducer Hook---------</h2>
             <br /><br />
             <div className="updown" id = "reducer">
-                <button className="hook-button" onClick = {incrementCount}>+</button>
-                <span>{ state.count }</span>
-                <button className = "hook-button" onClick = {decrementCount}>-</button>
+                <form onSubmit = {handleSubmit}>
+                    <input type="text" value = {todoName} className="hook-input" onChange = {e => setTodoName(e.target.value)} />
+                </form> <br /><br />
+                {todos.map(todo => {
+                    return <HookTodo key = {todo.id}  todo = {todo} dispatch = {dispatch} />
+                })}
             </div>
 
         </div>

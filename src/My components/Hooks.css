@@ -7,6 +7,12 @@ h2{
     text-align: center;
 }
 
+.hr{
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+
 .hook-button{
     height: 40px;
     width: auto;
