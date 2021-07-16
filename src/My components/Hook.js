@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback, useReducer } from 'react';
 
 import {List} from './List';
 import './Hooks.css';
@@ -15,6 +15,27 @@ export const Hook = () => {
 
     const [callbackNumber, setCallbackNumber] = useState(1);
     const [callbackDark, setCallbackDark] = useState(false);
+
+    const reducer = (state, action) => {
+        switch (action.type) {
+            case 'increment':
+                return { count : state.count + 1 };
+            case 'decrement':
+                return { count : state.count - 1 };
+            default:
+                return state;
+        }
+    };
+
+    const [state, dispatch] = useReducer(reducer, { count : 0 });
+
+    const incrementCount = () => {
+        dispatch({ type : 'increment' });
+    }
+
+    const decrementCount = () => {
+        dispatch({ type : 'decrement' });
+    }
 
     // -------------UseState---------------
 
@@ -143,14 +164,10 @@ export const Hook = () => {
 
             <h2>---------useReducer Hook---------</h2>
             <br /><br />
-            <div className="updown">
-                <input value = {callbackNumber} onChange = {e => setCallbackNumber(parseInt(e.target.value))} className="hook-input" type="number" />
-                <br />
-                <button onClick = {() => setCallbackDark(prevDark => !prevDark)} className="hook-button">Change Theme</button>
-                <br />
-                <div style = {callbackThemeStyle}>
-                <List getItems = {getItems} />
-                </div>
+            <div className="updown" id = "reducer">
+                <button className="hook-button" onClick = {incrementCount}>+</button>
+                <span>{ state.count }</span>
+                <button className = "hook-button" onClick = {decrementCount}>-</button>
             </div>
 
         </div>
